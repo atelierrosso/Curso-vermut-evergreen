@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elaboración de Vermut Artesanal — Julio Elorza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --crema:      #f2ede4;
+    --blanco:     #ffffff;
+    --verde:      #1a3a2a;
+    --verde-med:  #254d38;
+    --terracota:  #e05a2b;
+    --terracota-d:#c44e22;
+    --negro:      #111111;
+    --gris-claro: #e8e3da;
+    --gris-med:   #c5bfb3;
+    --texto:      #1a1a1a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1200&q=80') center/cover no-repeat;
+  }
+
+  .hero-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(26,58,42,0.2) 0%,
+      rgba(26,58,42,0.55) 55%,
+      rgba(17,17,17,0.93) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 2rem 3.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    background: var(--terracota);
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--blanco);
+    margin-bottom: 1.2rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+  }
+
+  .hero h1 em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--gris-med);
+    text-transform: none;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  }
+
+  .hero-sub {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: 1.75;
+  }
+
+  .fecha-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+    padding: 0.65rem 1.4rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.8rem;
+  }
+
+  .fecha-badge span { opacity: 0.4; }
+
+  .cta-hero {
+    display: inline-block;
+    background: var(--terracota);
+    color: var(--blanco);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2.2rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .cta-hero:hover { background: var(--terracota-d); transform: translateY(-2px); }
+
+  /* ── PRESENTADORES — fondo verde ── */
+  .presentan {
+    background: var(--verde);
+    padding: 1.1rem 2rem;
+    text-align: center;
+  }
+
+  .presentan p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    font-weight: 400;
+  }
+
+  .logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .logos span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blanco);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .logos .sep { color: var(--terracota); }
+
+  /* ── SECCIONES GENÉRICAS ── */
+  section { padding: 5rem 2rem; }
+
+  .container { max-width: 720px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    color: var(--verde);
+  }
+
+  /* ── DIFERENCIAL — fondo crema ── */
+  .diferencial {
+    background: var(--crema);
+    border-left: 3px solid var(--terracota);
+    padding: 5rem 2rem;
+  }
+
+  .diferencial .container p {
+    font-family: 'Lato', sans-serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(26,26,26,0.65);
+    margin-bottom: 1.2rem;
+  }
+
+  .diferencial .container p strong {
+    font-weight: 700;
+    color: var(--verde);
+  }
+
+  /* ── PROGRAMA — fondo verde ── */
+  .programa { background: var(--verde); }
+
+  .programa h2 { color: var(--blanco); }
+
+  .encuentros { margin-top: 2.5rem; display: flex; flex-direction: column; }
+
+  .encuentro {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .encuentro:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+  .enc-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+
+  .enc-body h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--blanco);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .enc-body p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  .programa-nota {
+    margin-top: 2.5rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid var(--terracota);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+  }
+
+  /* ── INCLUYE — fondo blanco ── */
+  .incluye { background: var(--blanco); }
+
+  .incluye h2 { color: var(--verde); }
+
+  .items-incluye {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .item-inc {
+    background: var(--crema);
+    padding: 1.8rem 1.5rem;
+    border-bottom: 3px solid var(--terracota);
+  }
+
+  .item-inc .icono { font-size: 1.4rem; margin-bottom: 0.8rem; }
+
+  .item-inc h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+    color: var(--verde);
+  }
+
+  .item-inc p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(26,26,26,0.55);
+    line-height: 1.55;
+  }
+
+  /* ── INSTRUCTOR — fondo crema ── */
+  .instructor {
+    background: var(--crema);
+    border-top: 1px solid var(--gris-claro);
+  }
+
+  .instructor h2 { color: var(--verde); }
+
+  .instructor-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .instructor-foto {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+
+  .instructor-bio h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+    color: var(--verde);
+  }
+
+  .instructor-titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    font-weight: 500;
+    margin-bottom: 1.3rem;
+    display: block;
+  }
+
+  .instructor-bio p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: rgba(26,26,26,0.65);
+    line-height: 1.75;
+    margin-bottom: 0.9rem;
+  }
+
+  .instructor-bio p strong { color: var(--verde); font-weight: 700; }
+
+  .marcas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.3rem;
+  }
+
+  .marca-tag {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--gris-med);
+    color: rgba(26,26,26,0.5);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .marca-tag:hover { border-color: var(--terracota); color: var(--terracota); }
+
+  /* ── PRECIO — fondo verde ── */
+  .precio-section {
+    background: var(--verde);
+    color: var(--blanco);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+
+  .precio-section .section-label { color: rgba(255,255,255,0.45); }
+  .precio-section h2 { color: var(--blanco); }
+
+  .precio-box {
+    max-width: 500px;
+    margin: 2.5rem auto 0;
+    background: rgba(255,255,255,0.06);
+    padding: 2.5rem;
+  }
+
+  .precio-preventa {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+  }
+
+  .precio-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .precio-regular {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    text-decoration: line-through;
+    margin-top: 0.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-precio {
+    display: block;
+    background: var(--terracota);
+    color: var(--blanco);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    transition: background 0.2s, transform 0.15s;
+    margin-bottom: 1.2rem;
+  }
+
+  .cta-precio:hover { background: var(--terracota-d); transform: translateY(-2px); }
+
+  .alias-note {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  .alias-note strong { color: rgba(255,255,255,0.8); font-weight: 700; }
+
+  .cuotas-nota {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  /* ── FAQ — fondo crema ── */
+  .faq { background: var(--crema); }
+
+  .faq h2 { color: var(--verde); }
+
+  .faq-list { margin-top: 2rem; display: flex; flex-direction: column; }
+
+  .faq-item {
+    border-top: 1px solid var(--gris-claro);
+    padding: 1.5rem 0;
+  }
+
+  .faq-item:last-child { border-bottom: 1px solid var(--gris-claro); }
+
+  .faq-item h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.6rem;
+    color: var(--verde);
+  }
+
+  .faq-item p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(26,26,26,0.6);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER — fondo negro ── */
+  footer {
+    background: var(--negro);
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  footer a { color: var(--terracota); text-decoration: none; }
+  footer a:hover { color: var(--terracota-d); }
+
+  /* ── RESPONSIVE ── */
+
+  /* ── PAGO E INSTRUCCIONES ── */
+  .pago-instrucciones {
+    margin-bottom: 2.5rem;
+  }
+
+  .pago-intro {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    font-style: italic;
+    border-left: 3px solid var(--terracota);
+    padding-left: 1rem;
+    text-align: left;
+  }
+
+  .pago-opciones {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pago-opcion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: rgba(255,255,255,0.07);
+    padding: 1.2rem 1.5rem;
+    flex: 1;
+    min-width: 180px;
+    text-align: left;
+  }
+
+  .pago-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    font-weight: 500;
+  }
+
+  .pago-banco {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blanco);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .pago-alias {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .pago-alias strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 700;
+  }
+
+  .pago-sep {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.3);
+    font-weight: 400;
+  }
+
+  /* ── FORMULARIO ── */
+  .form-inscripcion {
+    background: var(--blanco);
+    padding: 2.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .form-header {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--terracota);
+    padding-bottom: 1rem;
+  }
+
+  .form-titulo {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--verde);
+    margin-bottom: 0.3rem;
+  }
+
+  .form-subtitulo {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--gris-med);
+  }
+
+  .form-field {
+    margin-bottom: 1.3rem;
+  }
+
+  .form-field label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-field input,
+  .form-field select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--texto);
+    background: var(--crema);
+    border: 1px solid var(--gris-claro);
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus {
+    border-color: var(--terracota);
+  }
+
+  .form-field input::placeholder {
+    color: var(--gris-med);
+    font-weight: 300;
+  }
+
+  .form-confirmacion {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--gris-med);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .form-btn {
+    width: 100%;
+    background: var(--terracota);
+    color: var(--blanco);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .form-btn:hover {
+    background: var(--terracota-d);
+    transform: translateY(-2px);
+  }
+
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    body { font-size: 15px; }
+    section { padding: 3rem 1.2rem; }
+    .hero { min-height: 100vh; }
+    .hero-content { padding: 1.5rem 1.2rem 2rem; }
+    .hero h1 { font-size: 1.9rem; line-height: 1.1; }
+    .hero h1 em { font-size: 1.8rem; }
+    .hero-sub { font-size: 0.88rem; }
+    .eyebrow { font-size: 0.68rem; padding: 0.3rem 0.7rem; }
+    .fecha-badge { font-size: 0.75rem; gap: 0.4rem; flex-wrap: wrap; }
+    h2 { font-size: 1.55rem; line-height: 1.15; }
+    .encuentro { grid-template-columns: 2rem 1fr; gap: 1rem; padding: 1.5rem 0; }
+    .enc-num { font-size: 1.7rem; }
+    .enc-body h3 { font-size: 1rem; }
+    .enc-body p { font-size: 0.83rem; }
+    .items-incluye { grid-template-columns: 1fr 1fr; gap: 1px; }
+    .item-inc { padding: 1.2rem 1rem; }
+    .item-inc h4 { font-size: 0.82rem; }
+    .item-inc p { font-size: 0.75rem; }
+    .instructor-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .instructor-foto { aspect-ratio: 4/3; max-width: 100%; }
+    .instructor-bio h3 { font-size: 1.4rem; }
+    .precio-section { padding: 3rem 1.2rem; }
+    .precio-preventa { font-size: 2.2rem; }
+    .precio-box { padding: 1.5rem 1rem; }
+    .pago-opciones { flex-direction: column; gap: 0.8rem; }
+    .pago-opcion { min-width: 100%; }
+    .form-inscripcion { padding: 1.5rem 1rem; }
+    .form-titulo { font-size: 1rem; }
+    .form-field input,
+    .form-field select { font-size: 16px; }
+    .faq-item h4 { font-size: 0.95rem; }
+    .faq-item p { font-size: 0.85rem; }
+    .logos { gap: 1rem; }
+    .logos span { font-size: 0.9rem; }
+    .diferencial .container p { font-size: 1.05rem; }
+    .pago-intro { font-size: 0.82rem; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Curso Online · Edición Limitada</p>
+    <h1>Elaboración de<br><em>Vermut Artesanal</em></h1>
+    <p class="hero-sub">No es un curso de recetas. Es una metodología completa para que puedas formular, ajustar y replicar tu propio vermut con criterio técnico.</p>
+    <div class="fecha-badge">3 encuentros en vivo <span>·</span> 20 hs ARG <span>·</span> 100% Online</div>
+    <br>
+    
+  </div>
+</section>
+
+<!-- PRESENTADORES -->
+<div class="presentan">
+  <p>Presentan</p>
+  <div class="logos">
+    <span>Atelier ✦ Rosso</span>
+    <span class="sep">&amp;</span>
+    <span>Ofrenda Vermut</span>
+  </div>
+</div>
+
+<!-- DIFERENCIAL -->
+<section class="diferencial">
+  <div class="container">
+    <span class="section-label">Un curso para todos los niveles</span>
+    <p>Este curso está diseñado tanto para quienes recién empiezan como para quienes ya tienen experiencia y buscan llevar sus técnicas de elaboración a un nivel técnico y profesional.</p>
+    <p>A lo largo de la cursada vas a adquirir las herramientas y la metodología para formular tu propio vermut. Además, tendrás mi acompañamiento personalizado para elaborar tu primera receta durante el taller, evaluar los resultados juntos y realizar los ajustes necesarios para perfeccionar tu vermut.</p>
+    <p><strong>Trabajamos con cupos muy reducidos para garantizar el seguimiento de tu proceso.</strong></p>
+  </div>
+</section>
+
+<!-- PROGRAMA -->
+<section class="programa">
+  <div class="container">
+    <span class="section-label">El programa</span>
+    <h2>Tres encuentros.<br>Un vermut propio.</h2>
+
+    <div class="encuentros">
+      <div class="encuentro">
+        <div class="enc-num">1</div>
+        <div class="enc-body">
+          <h3>Fundamentos y materia prima</h3>
+          <p>Historia, estilos internacionales y marco técnico del vermut. Botánicos, propiedades extractivas, selección de base alcohólica. Arrancás a diseñar tu fórmula.</p>
+        </div>
+      </div>
+      <div class="encuentro">
+        <div class="enc-num">2</div>
+        <div class="enc-body">
+          <h3>Formulación y proceso</h3>
+          <p>Extracción hidroalcohólica, balance de fórmula, ensamblaje y ajuste de parámetros críticos — ABV, amargor, perfil aromático. En la segunda mitad de esta clase se establecen las pautas del taller práctico. A partir de ahí, cada alumno elabora su propio vermut antes del tercer encuentro.</p>
+        </div>
+      </div>
+      <div class="encuentro">
+        <div class="enc-num">3</div>
+        <div class="enc-body">
+          <h3>Cata, evaluación y ajuste</h3>
+          <p>Presentás tu vermut. Evaluación sensorial conjunta de todos los vermuts desarrollados por el grupo de alumnos: analizamos cada decisión, corregimos lo que hace falta y reafirmamos los aciertos. Troubleshooting técnico en vivo.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="programa-nota">Grupos reducidos para garantizar el seguimiento personalizado de cada participante a lo largo de todo el proceso.</p>
+  </div>
+</section>
+
+<!-- INCLUYE -->
+<section class="incluye">
+  <div class="container">
+    <span class="section-label">Qué incluye la inscripción</span>
+    <h2>Todo lo que necesitás<br>para aprender bien.</h2>
+    <div class="items-incluye">
+      <div class="item-inc">
+        <div class="icono">🎥</div>
+        <h4>3 clases en vivo</h4>
+        <p>Encuentros por Zoom con participación activa y consultas en tiempo real.</p>
+      </div>
+      <div class="item-inc">
+        <div class="icono">📹</div>
+        <h4>Grabaciones</h4>
+        <p>Acceso posterior a todas las clases para repasar cuando lo necesites.</p>
+      </div>
+      <div class="item-inc">
+        <div class="icono">📋</div>
+        <h4>Material técnico</h4>
+        <p>Documentación complementaria de apoyo para seguir profundizando.</p>
+      </div>
+      <div class="item-inc">
+        <div class="icono">📜</div>
+        <h4>Certificado</h4>
+        <p>Certificado de asistencia y aprobación al completar el curso.</p>
+      </div>
+      <div class="item-inc">
+        <div class="icono">🧑‍🏫</div>
+        <h4>Acompañamiento</h4>
+        <p>Seguimiento personalizado de tu proceso de formulación durante toda la cursada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section class="instructor">
+  <div class="container">
+    <span class="section-label">El instructor</span>
+    <div class="instructor-grid">
+      <img class="instructor-foto" src="julio-instructor.jpg" alt="Julio Elorza">
+      <div class="instructor-bio">
+        <h3>Julio Elorza</h3>
+        <span class="instructor-titulo">Brewmaster · Maestro Vermutero · Consultor</span>
+        <p>Fundador de <strong>Ofrenda Vermut</strong> y de <strong>Atelier Rosso</strong>, estudio de desarrollo de recetas de vermut exclusivas para bares, restaurantes y emprendedores.</p>
+        <p>Docente especialista en bebidas maceradas, destiladas y fermentadas. Su metodología parte de la comprensión técnica de cada botánico y cada proceso, para que el alumno pueda tomar decisiones propias y no simplemente seguir pasos.</p>
+        <p>Con base en Buenos Aires, trabaja con productores, bares y emprendedores de todo el país en el desarrollo de sus propias fórmulas de vermut.</p>
+        <div class="marcas">
+          <a class="marca-tag" href="https://www.instagram.com/ofrendavermut/" target="_blank">Ofrenda Vermut</a>
+          <a class="marca-tag" href="https://www.instagram.com/atelierrosso.ba/" target="_blank">Atelier Rosso</a>
+          <a class="marca-tag" href="https://julioelorza.com" target="_blank">Brewlio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIO -->
+<section class="precio-section">
+  <span class="section-label">Inversión</span>
+  <h2>Las inscripciones están abiertas.<br>Los cupos son limitados.</h2>
+  <div class="precio-box">
+    <span class="precio-label">Precio preventa</span>
+    <div class="precio-preventa">$65.000 ARS</div>
+    <p class="precio-regular">Precio regular: $80.000 ARS</p>
+    <p class="alias-note">Transferí al alias <strong>ofrenda.vermut</strong> en Mercado Pago<br>y luego completá el formulario con tus datos.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAkxxIoQ7Cq7HFT6rXipI_mUvPhAen4-ZhiTSDDAN7X2PGkA/viewform?usp=publish-editor" target="_blank" class="cta-precio">Completar mis datos de inscripción</a>
+    <p class="cuotas-nota">También podés abonar en cuotas con tu tarjeta de crédito a través de Mercado Pago.</p>
+  <div class="pago-instrucciones">
+      <p class="pago-intro">Realizá tu transferencia y completá el formulario. En menos de 3 horas recibís confirmación de tu inscripción en el correo que registraste.</p>
+      <div class="pago-opciones">
+        <div class="pago-opcion">
+          <span class="pago-label">Opción 1 — Transferencia bancaria</span>
+          <span class="pago-banco">Banco Santander Río</span>
+          <span class="pago-alias"><strong>Alias:</strong> atelier.rosso</span>
+        </div>
+        <div class="pago-sep">ó</div>
+        <div class="pago-opcion">
+          <span class="pago-label">Opción 2 — Mercado Pago</span>
+          <span class="pago-banco">Cuenta Ofrenda Vermut</span>
+          <span class="pago-alias"><strong>Alias:</strong> ofrenda.vermut</span>
+        </div>
+      </div>
+      <p class="cuotas-nota">También podés abonar en cuotas con tu tarjeta de crédito a través de Mercado Pago.</p>
+    </div>
+
+    <form class="form-inscripcion" action="https://formspree.io/f/mrpgbwll" method="POST">
+      <div class="form-header">
+        <span class="form-titulo">Formulario de Inscripción</span>
+        <span class="form-subtitulo">Completá tus datos después de realizar la transferencia</span>
+      </div>
+      <div class="form-field">
+        <label for="nombre">Nombre y apellido *</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+      </div>
+      <div class="form-field">
+        <label for="email">Correo electrónico *</label>
+        <input type="email" id="email" name="email" placeholder="Tu email" required>
+      </div>
+      <div class="form-field">
+        <label for="whatsapp">Número de WhatsApp *</label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: +54 9 11 1234-5678" required>
+      </div>
+      <div class="form-field">
+        <label for="edicion">¿A qué edición del curso te estás inscribiendo? *</label>
+        <select id="edicion" name="edicion" required>
+          <option value="" disabled selected>Seleccioná una edición</option>
+          <option value="Edición Septiembre 2026 — 3, 10 y 24 de septiembre · 20 hs">Edición Septiembre 2026 — 3, 10 y 24 de septiembre · 20 hs</option>
+          <option value="Edición Octubre 2026 — 1, 8 y 22 de octubre · 20 hs">Edición Octubre 2026 — 1, 8 y 22 de octubre · 20 hs</option>
+          <option value="Edición Noviembre 2026 — 6, 13 y 27 de noviembre · 20 hs">Edición Noviembre 2026 — 6, 13 y 27 de noviembre · 20 hs</option>
+          <option value="Edición Diciembre 2026 — 1, 15 y 22 de diciembre · 20 hs (martes)">Edición Diciembre 2026 — 1, 15 y 22 de diciembre · 20 hs (martes)</option>
+        </select>
+      </div>
+      <p class="form-confirmacion">Una vez enviado tus datos, recibirás confirmación de tu inscripción en menos de 3 horas en tu correo electrónico.</p>
+      <button type="submit" class="form-btn">Completar mi inscripción</button>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <span class="section-label">Preguntas frecuentes</span>
+    <h2>Lo que suelen<br>preguntar.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>¿Necesito experiencia previa en elaboración de bebidas?</h4>
+        <p>No. El curso está diseñado para funcionar tanto para quienes empiezan desde cero como para quienes ya tienen experiencia y buscan llevar su técnica a un nivel más profesional. La metodología parte de los fundamentos y escala progresivamente.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Qué necesito tener en casa para hacer el curso?</h4>
+        <p>Los ingredientes básicos para elaborar tu vermut durante la cursada — botánicos, base alcohólica, vino. En las primeras clases se detalla exactamente qué conseguir y dónde, sin equipamiento especializado.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿El curso es en vivo o grabado?</h4>
+        <p>Los tres encuentros son en vivo por Zoom, con participación activa. Después de cada sesión tenés acceso a la grabación completa para repasar el contenido cuando lo necesites.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Cuántos participantes hay por grupo?</h4>
+        <p>Los grupos son reducidos por diseño — el acompañamiento personalizado es parte central de la propuesta. Los cupos son limitados y se completan por orden de inscripción.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Cómo confirmo mi inscripción?</h4>
+        <p>Transferís al alias <strong>ofrenda.vermut</strong> en Mercado Pago y completás el formulario de inscripción con tu nombre, email y WhatsApp. Te confirmamos la inscripción de inmediato y recibís el enlace de Zoom 48 horas antes de cada clase.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Julio Elorza · Brewmaster · Maestro Vermutero · Consultor · Buenos Aires, Argentina</p>
+  <p style="margin-top:0.5rem"><a href="https://julioelorza.com">julioelorza.com</a> · <a href="https://www.instagram.com/ofrendavermut/">@ofrendavermut</a> · <a href="https://www.instagram.com/atelierrosso.ba/">@atelierrosso.ba</a></p>
+</footer>
+
+</body>
+</html>
