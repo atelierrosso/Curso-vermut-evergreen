@@ -4,6 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elaboración de Vermut Artesanal — Julio Elorza</title>
+
+<!-- ===================================================================
+     META PIXEL — PENDIENTE: reemplazá TU_PIXEL_ID_AQUI por tu ID real
+     (Administrador de eventos → Orígenes de datos → tu Pixel → ID).
+=================================================================== -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'TU_PIXEL_ID_AQUI');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=TU_PIXEL_ID_AQUI&ev=PageView&noscript=1"
+/></noscript>
+<!-- =================================================================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
@@ -149,6 +170,22 @@
   }
 
   .cta-hero:hover { background: var(--terracota-d); transform: translateY(-2px); }
+
+  .cta-repeat { margin-top: 2rem; }
+
+  .proxima-edicion-badge {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--terracota);
+    margin: -0.8rem 0 1.4rem;
+  }
+
+  .precio-section .proxima-edicion-badge {
+    color: var(--terracota);
+    font-size: 0.9rem;
+    margin: 0.8rem 0 1.6rem;
+  }
 
   /* ── PRESENTADORES — fondo verde ── */
   .presentan {
@@ -421,26 +458,19 @@
   .precio-section h2 { color: var(--blanco); }
 
   .precio-box {
-    max-width: 500px;
+    max-width: 640px;
     margin: 2.5rem auto 0;
     background: rgba(255,255,255,0.06);
     padding: 2.5rem;
   }
 
-  .precio-preventa {
-    font-family: 'Oswald', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--terracota);
-    line-height: 1;
-  }
-
-  .precio-cuotas {
+  .precio-tachado {
     font-family: 'Lato', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 300;
-    color: rgba(255,255,255,0.6);
-    margin-top: 0.6rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: line-through;
+    margin-bottom: 0.3rem;
   }
 
   .precio-label {
@@ -453,50 +483,115 @@
     display: block;
   }
 
-  .precio-regular {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.35);
-    text-decoration: line-through;
-    margin-top: 0.3rem;
-    margin-bottom: 1.5rem;
-  }
-
   .cta-precio {
     display: block;
     background: var(--terracota);
     color: var(--blanco);
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.1em;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 2rem;
+    text-align: center;
+    padding: 0.9rem 1rem;
     transition: background 0.2s, transform 0.15s;
-    margin-bottom: 1.2rem;
+    margin-top: 1rem;
   }
 
   .cta-precio:hover { background: var(--terracota-d); transform: translateY(-2px); }
 
-  .alias-note {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.7;
+  /* ── DOS MÉTODOS DE PAGO, tarjetas parejas ── */
+  .metodos-pago {
+    display: flex;
+    gap: 1.2rem;
+    margin: 1.6rem 0 2rem;
   }
 
-  .alias-note strong { color: rgba(255,255,255,0.8); font-weight: 700; }
+  .metodo-pago {
+    flex: 1;
+    min-width: 0;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 1.4rem 1.3rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
 
-  .cuotas-nota {
+  .metodo-pago.metodo-destacado {
+    border-color: var(--terracota);
+    background: rgba(193,97,59,0.08);
+  }
+
+  .metodo-tag {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--terracota);
+    color: var(--blanco);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.55rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .metodo-tag-alt {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .metodo-nombre {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--blanco);
+    margin: 0 0 0.2rem;
+    overflow-wrap: break-word;
+  }
+
+  .metodo-detalle {
     font-family: 'Lato', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 300;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.5);
+    margin: 0 0 0.9rem;
+    overflow-wrap: break-word;
+  }
+
+  .metodo-precio {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--blanco);
+    line-height: 1;
+  }
+
+  .metodo-precio span {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    margin-left: 0.3rem;
+  }
+
+  .metodo-alias-btn {
+    display: block;
+    background: var(--terracota);
+    color: var(--blanco);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.9rem 1rem;
     margin-top: 1rem;
-    font-style: italic;
+    overflow-wrap: break-word;
   }
 
   /* ── FAQ — fondo crema ── */
@@ -536,7 +631,7 @@
     background: var(--negro);
     color: rgba(255,255,255,0.3);
     text-align: center;
-    padding: 2rem 2rem 6rem;
+    padding: 2rem;
     font-family: 'Lato', sans-serif;
     font-size: 0.78rem;
     font-weight: 300;
@@ -546,53 +641,61 @@
   footer a { color: var(--terracota); text-decoration: none; }
   footer a:hover { color: var(--terracota-d); }
 
-  /* ── BOTÓN FLOTANTE WHATSAPP ── */
-  .wa-flotante {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+  /* ── SECCIÓN WHATSAPP (última opción, no flotante) ── */
+  .wa-section {
     background: var(--verde);
-    color: var(--blanco);
-    text-decoration: none;
-    padding: 0.85rem 1.3rem;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 600;
-    font-size: 0.82rem;
-    letter-spacing: 0.03em;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    transition: background 0.2s, transform 0.15s;
-    max-width: calc(100vw - 3rem);
+    text-align: center;
+    padding: 3.5rem 2rem;
   }
 
-  .wa-flotante:hover { background: var(--verde-med); transform: translateY(-2px); }
+  .wa-titulo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--blanco);
+    margin-bottom: 0.6rem;
+  }
 
-  .wa-flotante svg { flex-shrink: 0; width: 1.2rem; height: 1.2rem; }
+  .wa-sub {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1.6rem;
+  }
 
-  .wa-flotante span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--terracota);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 0.9rem 1.8rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .wa-btn:hover { background: var(--terracota-d); transform: translateY(-2px); }
+
+  .wa-btn svg { flex-shrink: 0; width: 1.2rem; height: 1.2rem; }
 
   @media (max-width: 768px) {
-    .wa-flotante {
-      bottom: 1rem;
-      right: 1rem;
-      left: 1rem;
-      justify-content: center;
-      font-size: 0.8rem;
-      padding: 0.9rem 1rem;
-      max-width: none;
-    }
+    .wa-section { padding: 2.5rem 1.2rem; }
+    .wa-titulo { font-size: 1.1rem; }
+    .wa-btn { width: 100%; justify-content: center; }
   }
 
   /* ── RESPONSIVE ── */
 
-  /* ── PAGO E INSTRUCCIONES ── */
-  .pago-instrucciones {
-    margin-bottom: 2.5rem;
-  }
 
+  /* ── PAGO E INSTRUCCIONES ── */
   .pago-intro {
     font-family: 'Lato', sans-serif;
     font-size: 0.88rem;
@@ -604,63 +707,6 @@
     border-left: 3px solid var(--terracota);
     padding-left: 1rem;
     text-align: left;
-  }
-
-  .pago-opciones {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .pago-opcion {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    background: rgba(255,255,255,0.07);
-    padding: 1.2rem 1.5rem;
-    flex: 1;
-    min-width: 180px;
-    text-align: left;
-  }
-
-  .pago-label {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--terracota);
-    font-weight: 500;
-  }
-
-  .pago-banco {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--blanco);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .pago-alias {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.6);
-  }
-
-  .pago-alias strong {
-    color: rgba(255,255,255,0.85);
-    font-weight: 700;
-  }
-
-  .pago-sep {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1rem;
-    color: rgba(255,255,255,0.3);
-    font-weight: 400;
   }
 
   /* ── FORMULARIO ── */
@@ -804,10 +850,10 @@
     .instructor-foto { aspect-ratio: 4/3; max-width: 100%; }
     .instructor-bio h3 { font-size: 1.4rem; }
     .precio-section { padding: 3rem 1.2rem; }
-    .precio-preventa { font-size: 2.2rem; }
+    .metodos-pago { flex-direction: column; gap: 1rem; }
+    .metodo-pago { min-width: 0; }
+    .metodo-precio { font-size: 1.4rem; }
     .precio-box { padding: 1.5rem 1rem; }
-    .pago-opciones { flex-direction: column; gap: 0.8rem; }
-    .pago-opcion { min-width: 100%; }
     .form-inscripcion { padding: 1.5rem 1rem; }
     .form-titulo { font-size: 1rem; }
     .form-field input,
@@ -818,7 +864,6 @@
     .logos span { font-size: 0.9rem; }
     .diferencial .container p { font-size: 1.05rem; }
     .pago-intro { font-size: 0.82rem; }
-    footer { padding-bottom: 7rem; }
   }
 
 </style>
@@ -833,8 +878,8 @@
     <h1>Elaboración de<br><em>Vermut Artesanal</em></h1>
     <p class="hero-sub">No es un curso de recetas. Es una metodología completa para que puedas formular, ajustar y replicar tu propio vermut con criterio técnico.</p>
     <div class="fecha-badge">3 encuentros en vivo <span>·</span> 20 hs ARG <span>·</span> 100% Online</div>
-    <br>
-    
+    <p class="proxima-edicion-badge" id="proxima-edicion-hero">Próxima edición: cargando…</p>
+    <a href="#precio" class="cta-hero">Quiero inscribirme</a>
   </div>
 </section>
 
@@ -889,6 +934,7 @@
     </div>
 
     <p class="programa-nota">Grupos reducidos para garantizar el seguimiento personalizado de cada participante a lo largo de todo el proceso.</p>
+    <a href="#precio" class="cta-hero cta-repeat">Quiero reservar mi lugar</a>
   </div>
 </section>
 
@@ -950,39 +996,40 @@
 </section>
 
 <!-- PRECIO -->
-<section class="precio-section">
+<section class="precio-section" id="precio">
   <span class="section-label">Inversión</span>
   <h2>Las inscripciones están abiertas.<br>Los cupos son limitados.</h2>
   <div class="precio-box">
-    <span class="precio-label">Precio preventa</span>
-    <div class="precio-preventa">$80.000 ARS</div>
-    <p class="precio-cuotas">o 3 cuotas sin interés de $26.667</p>
-    <p class="precio-regular">Precio regular: $120.000 ARS</p>
-    <p class="alias-note">Transferí al alias <strong>ofrenda.vermut</strong> en Mercado Pago<br>y luego completá el formulario con tus datos.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAkxxIoQ7Cq7HFT6rXipI_mUvPhAen4-ZhiTSDDAN7X2PGkA/viewform?usp=publish-editor" target="_blank" class="cta-precio">Completar mis datos de inscripción</a>
-    <p class="cuotas-nota">También podés abonar en 3 cuotas sin interés con tu tarjeta de crédito a través de Mercado Pago.</p>
-  <div class="pago-instrucciones">
-      <p class="pago-intro">Realizá tu transferencia y completá el formulario. En menos de 3 horas recibís confirmación de tu inscripción en el correo que registraste.</p>
-      <div class="pago-opciones">
-        <div class="pago-opcion">
-          <span class="pago-label">Opción 1 — Transferencia bancaria</span>
-          <span class="pago-banco">Banco Santander Río</span>
-          <span class="pago-alias"><strong>Alias:</strong> atelier.rosso</span>
-        </div>
-        <div class="pago-sep">ó</div>
-        <div class="pago-opcion">
-          <span class="pago-label">Opción 2 — Mercado Pago</span>
-          <span class="pago-banco">Cuenta Ofrenda Vermut</span>
-          <span class="pago-alias"><strong>Alias:</strong> ofrenda.vermut</span>
-        </div>
+    <span class="precio-label">Precio regular</span>
+    <div class="precio-tachado">$120.000 ARS</div>
+    <p class="proxima-edicion-badge" id="proxima-edicion-precio">Próxima edición: cargando…</p>
+
+    <div class="metodos-pago">
+      <div class="metodo-pago">
+        <span class="metodo-tag metodo-tag-alt">Hasta 3 cuotas sin interés</span>
+        <p class="metodo-nombre">Mercado Pago</p>
+        <p class="metodo-detalle">Tarjeta de crédito o débito</p>
+        <div class="metodo-precio">$85.000 <span>ARS</span></div>
+        <a href="https://mpago.li/2gxYT3z" target="_blank" rel="noopener" class="cta-precio">Pagar con Mercado Pago</a>
       </div>
-      <p class="cuotas-nota">También podés abonar en 3 cuotas sin interés con tu tarjeta de crédito a través de Mercado Pago.</p>
+
+      <div class="metodo-pago metodo-destacado">
+        <span class="metodo-tag">10% OFF</span>
+        <p class="metodo-nombre">Transferencia bancaria</p>
+        <p class="metodo-detalle">Banco Santander Río</p>
+        <div class="metodo-precio">$76.500 <span>ARS</span></div>
+        <div class="metodo-alias-btn">Alias: atelier.rosso</div>
+      </div>
     </div>
 
+    <p class="pago-intro">Luego de efectuar tu pago —por Mercado Pago o transferencia— completá el formulario con tus datos para confirmar tu inscripción. En menos de 3 horas te llega la confirmación por correo.</p>
+
     <form class="form-inscripcion" action="https://formspree.io/f/mrpgbwll" method="POST">
+      <input type="hidden" name="_next" value="https://atelierrosso.github.io/Curso-vermut-evergreen/gracias.html">
+      <input type="hidden" name="_subject" value="Nueva inscripción — Maestría en Vermut Artesanal">
       <div class="form-header">
         <span class="form-titulo">Formulario de Inscripción</span>
-        <span class="form-subtitulo">Completá tus datos después de realizar la transferencia</span>
+        <span class="form-subtitulo">Completá tus datos después de tu pago o transferencia</span>
       </div>
       <div class="form-field">
         <label for="nombre">Nombre y apellido *</label>
@@ -1042,16 +1089,47 @@
   </div>
 </section>
 
+<!-- WHATSAPP — última opción -->
+<section class="wa-section">
+  <p class="wa-titulo">¿Todavía tenés dudas?</p>
+  <p class="wa-sub">Escribime directo y te respondo yo mismo.</p>
+  <a class="wa-btn" href="https://wa.me/5491128374474" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zm-5.55 12.2h-.01a6.58 6.58 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 12.26-3.51 6.56 6.56 0 0 1-6.66 6.6zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.11.13-.2.2-.33.06-.13.03-.25 0-.35s-.44-1.05-.6-1.44c-.16-.38-.32-.33-.44-.33h-.37a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.63c0 .96.7 1.9.8 2.03.1.13 1.38 2.1 3.34 2.95.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+    Escribime por WhatsApp
+  </a>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Julio Elorza · Brewmaster · Maestro Vermutero · Consultor · Buenos Aires, Argentina</p>
   <p style="margin-top:0.5rem"><a href="https://julioelorza.com">julioelorza.com</a> · <a href="https://www.instagram.com/ofrendavermut/">@ofrendavermut</a> · <a href="https://www.instagram.com/atelierrosso.ba/">@atelierrosso.ba</a></p>
 </footer>
 
-<a class="wa-flotante" href="https://wa.me/5491128374474" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zm-5.55 12.2h-.01a6.58 6.58 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 12.26-3.51 6.56 6.56 0 0 1-6.66 6.6zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.11.13-.2.2-.33.06-.13.03-.25 0-.35s-.44-1.05-.6-1.44c-.16-.38-.32-.33-.44-.33h-.37a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.63c0 .96.7 1.9.8 2.03.1.13 1.38 2.1 3.34 2.95.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
-  <span>¿Tenés dudas? Escribime directo</span>
-</a>
+<script>
+// ── Próxima edición disponible (calculada según la fecha de hoy) ──
+(function() {
+  var ediciones = [
+    { firstDate: '2026-09-03', label: 'Edición Septiembre 2026 — 3, 10 y 24 de septiembre · 20 hs' },
+    { firstDate: '2026-10-01', label: 'Edición Octubre 2026 — 1, 8 y 22 de octubre · 20 hs' },
+    { firstDate: '2026-11-06', label: 'Edición Noviembre 2026 — 6, 13 y 27 de noviembre · 20 hs' },
+    { firstDate: '2026-12-01', label: 'Edición Diciembre 2026 — 1, 15 y 22 de diciembre · 20 hs (martes)' }
+  ];
+  var hoy = new Date();
+  var proxima = ediciones.find(function(e) { return new Date(e.firstDate + 'T00:00:00') > hoy; });
+  var texto = proxima ? 'Próxima edición: ' + proxima.label : 'Consultanos por la próxima edición disponible';
+  var elHero = document.getElementById('proxima-edicion-hero');
+  var elPrecio = document.getElementById('proxima-edicion-precio');
+  if (elHero) elHero.textContent = texto;
+  if (elPrecio) elPrecio.textContent = texto;
+})();
+
+// ── Evento "Lead" de Meta Pixel al mostrar intención de inscripción ──
+document.querySelectorAll('.cta-hero, .wa-btn, .form-btn').forEach(function(el) {
+  el.addEventListener('click', function() {
+    if (typeof fbq === 'function') fbq('track', 'Lead');
+  });
+});
+</script>
 
 </body>
 </html>
