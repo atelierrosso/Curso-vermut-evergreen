@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Inscripción recibida! — Maestría en Vermut Artesanal</title>
+<meta name="robots" content="noindex">
+
+<!-- ===================================================================
+     META PIXEL — PENDIENTE
+     Reemplazá 771061721722332 por el ID real de tu Pixel de Meta
+     (Administrador de eventos → Orígenes de datos → tu Pixel → ID).
+     Sin ese ID, este bloque no envía nada y no rompe la página.
+=================================================================== -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '771061721722332');
+fbq('track', 'PageView');
+/* Usamos "Lead" y no "Purchase": este evento se dispara al completar
+   el formulario, no al confirmar el pago (que hoy es manual, por
+   transferencia). Marcarlo como "Purchase" sin verificación real de
+   pago distorsionaría la optimización de tus campañas en Meta. */
+fbq('track', 'Lead', {content_name: 'Maestria Vermut Artesanal', value: 80000.00, currency: 'ARS'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=771061721722332&ev=PageView&noscript=1"
+/></noscript>
+<!-- =================================================================== -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
+  :root {
+    --verde: #1a3a2a;
+    --terracota: #c1613b;
+    --crema: #f5f0e6;
+    --blanco: #ffffff;
+    --texto: #1a1a1a;
+  }
+
+  html, body { max-width: 100%; overflow-x: hidden; }
+
+  body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background: var(--verde);
+    color: var(--blanco);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .caja {
+    max-width: 520px;
+    text-align: center;
+  }
+
+  .check {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+    color: var(--blanco);
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1rem;
+  }
+
+  .pasos {
+    text-align: left;
+    background: rgba(255,255,255,0.06);
+    padding: 1.5rem 1.8rem;
+    margin: 2rem 0;
+  }
+
+  .pasos li { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 300; }
+
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--terracota);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 0.9rem 1.8rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+
+  .volver { display: block; margin-top: 2rem; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+  .volver a { color: rgba(255,255,255,0.75); }
+</style>
+</head>
+<body>
+
+<div class="caja">
+  <div class="check">✓</div>
+  <h1>¡Recibimos tus datos!</h1>
+  <p>Gracias por inscribirte en la Maestría en Vermut Artesanal. En menos de 3 horas vas a recibir la confirmación de tu inscripción en el correo que registraste.</p>
+
+  <div class="pasos">
+    <p style="margin-bottom:0.8rem; color:var(--blanco); font-weight:400;">Recordá:</p>
+    <ul>
+      <li>Si todavía no hiciste la transferencia, hacela al alias correspondiente (Santander Río o Mercado Pago) por el monto de tu edición.</li>
+      <li>Guardá el comprobante — te lo podemos pedir para agilizar la confirmación.</li>
+      <li>Cualquier duda, escribime directo por WhatsApp.</li>
+    </ul>
+  </div>
+
+  <a class="btn-wa" href="https://wa.me/5491128374474" target="_blank" rel="noopener">Escribime por WhatsApp</a>
+
+  <p class="volver"><a href="https://atelierrosso.github.io/Curso-vermut-evergreen/">← Volver a la página del curso</a></p>
+</div>
+
+</body>
+</html>
