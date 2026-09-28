@@ -501,11 +501,26 @@ src="https://www.facebook.com/tr?id=771061721722332&ev=PageView&noscript=1"
 
   .cta-precio:hover { background: var(--terracota-d); transform: translateY(-2px); }
 
+  .precio-contexto {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
   /* ── DOS MÉTODOS DE PAGO, tarjetas parejas ── */
   .metodos-pago {
     display: flex;
     gap: 1.2rem;
-    margin: 1.6rem 0 2rem;
+    margin: 2.2rem 0 0;
+  }
+
+  .metodos-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.9rem;
+    text-align: center;
   }
 
   .metodo-pago {
@@ -997,39 +1012,16 @@ src="https://www.facebook.com/tr?id=771061721722332&ev=PageView&noscript=1"
 
 <!-- PRECIO -->
 <section class="precio-section" id="precio">
-  <span class="section-label">Inversión</span>
-  <h2>Las inscripciones están abiertas.<br>Los cupos son limitados.</h2>
+  <span class="section-label">Reservá tu lugar</span>
+  <h2>Los cupos son limitados.</h2>
+
   <div class="precio-box">
-    <span class="precio-label">Precio regular</span>
-    <div class="precio-tachado">$120.000 ARS</div>
-    <p class="proxima-edicion-badge" id="proxima-edicion-precio">Próxima edición: cargando…</p>
-
-    <div class="metodos-pago">
-      <div class="metodo-pago">
-        <span class="metodo-tag metodo-tag-alt">Hasta 3 cuotas sin interés</span>
-        <p class="metodo-nombre">Mercado Pago</p>
-        <p class="metodo-detalle">Tarjeta de crédito o débito</p>
-        <div class="metodo-precio">$85.000 <span>ARS</span></div>
-        <a href="https://mpago.li/2gxYT3z" target="_blank" rel="noopener" class="cta-precio">Pagar con Mercado Pago</a>
-      </div>
-
-      <div class="metodo-pago metodo-destacado">
-        <span class="metodo-tag">10% OFF</span>
-        <p class="metodo-nombre">Transferencia bancaria</p>
-        <p class="metodo-detalle">Banco Santander Río</p>
-        <div class="metodo-precio">$76.500 <span>ARS</span></div>
-        <div class="metodo-alias-btn">Alias: atelier.rosso</div>
-      </div>
-    </div>
-
-    <p class="pago-intro">Luego de efectuar tu pago —por Mercado Pago o transferencia— completá el formulario con tus datos para confirmar tu inscripción. En menos de 3 horas te llega la confirmación por correo.</p>
-
     <form class="form-inscripcion" action="https://formspree.io/f/mrpgbwll" method="POST">
       <input type="hidden" name="_next" value="https://atelierrosso.github.io/Curso-vermut-evergreen/gracias.html">
       <input type="hidden" name="_subject" value="Nueva inscripción — Maestría en Vermut Artesanal">
       <div class="form-header">
         <span class="form-titulo">Formulario de Inscripción</span>
-        <span class="form-subtitulo">Completá tus datos después de tu pago o transferencia</span>
+        <span class="form-subtitulo">Completá tus datos para reservar tu lugar. Después te mostramos cómo pagar.</span>
       </div>
       <div class="form-field">
         <label for="nombre">Nombre y apellido *</label>
@@ -1054,8 +1046,32 @@ src="https://www.facebook.com/tr?id=771061721722332&ev=PageView&noscript=1"
         </select>
       </div>
       <p class="form-confirmacion">Una vez enviado tus datos, recibirás confirmación de tu inscripción en menos de 3 horas en tu correo electrónico.</p>
-      <button type="submit" class="form-btn">Completar mi inscripción</button>
+      <button type="submit" class="form-btn">Reservar mi lugar</button>
     </form>
+
+    <div class="metodos-pago">
+      <p class="metodos-label">Formas de pago disponibles</p>
+      <div class="precio-contexto">
+        <span class="precio-label">Precio regular</span>
+        <div class="precio-tachado">$120.000 ARS</div>
+        <p class="proxima-edicion-badge" id="proxima-edicion-precio">Próxima edición: cargando…</p>
+      </div>
+      <div class="metodo-pago">
+        <span class="metodo-tag metodo-tag-alt">Hasta 3 cuotas sin interés</span>
+        <p class="metodo-nombre">Mercado Pago</p>
+        <p class="metodo-detalle">Tarjeta de crédito o débito</p>
+        <div class="metodo-precio">$85.000 <span>ARS</span></div>
+        <a href="https://mpago.li/2gxYT3z" target="_blank" rel="noopener" class="cta-precio">Pagar con Mercado Pago</a>
+      </div>
+
+      <div class="metodo-pago metodo-destacado">
+        <span class="metodo-tag">10% OFF</span>
+        <p class="metodo-nombre">Transferencia bancaria</p>
+        <p class="metodo-detalle">Banco Santander Río</p>
+        <div class="metodo-precio">$76.500 <span>ARS</span></div>
+        <div class="metodo-alias-btn">Alias: atelier.rosso</div>
+      </div>
+    </div>
   </div>
 </section>
 
